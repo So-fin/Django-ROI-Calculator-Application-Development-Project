@@ -1,0 +1,62 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Advisor & Co.</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static 'css1/style.css' %}" type="text/css">
+</head>
+<body>
+<center>
+    <h2>
+        Advisor and Co.
+    </h2>
+</center>
+<div id="background">
+    <div id="page">
+        <div id="header">
+            <div id="navigation">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'index' %}">Services</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'AboutUs' %}">About</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contactUs' %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+
+
+    {% endblock %}
+
+    <div id="footer">
+        <div>
+            <ul class="navigation">
+                <li>
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'index' %}">Services</a>
+                </li>
+                <li>
+                    <a href="{% url 'AboutUs' %}">About</a>
+                </li>
+                <li>
+                    <a href="{% url 'contactUs' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

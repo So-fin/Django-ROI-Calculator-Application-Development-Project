@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Return Of Investment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+</head>
+<body>
+<div class="container-login100" style="background-image: url({% static 'images/bg-01.jpg' %});">
+    <div style="width:985px" class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+        <form class="login100-form validate-form" method="GET">
+            <table class="table" cellspacing="0">
+                <thead>
+                <tr>
+                    <td colspan="5">
+                        <span class="login100-form-title p-t-30">
+					Investment details for 1st year
+				</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Investment Amount</th>
+                    <th>Time Period</th>
+                    <th>Return Rate</th>
+                    <th>Return Rate Amount</th>
+                    <th>Return on Investment</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ amount }}</td>
+                    <td>1</td>
+                    <td>{{ ir }}</td>
+                    <td>{{ oneinterest }}</td>
+                    <td>{{ oneROIA }}</td>
+                </tr>
+                </tbody>
+                <tr>
+                    <td colspan="5">
+                        <span class="login100-form-title p-t-30">
+					Investment Details at the end of time period
+				</span>
+                    </td>
+                </tr>
+                <thead>
+                <tr>
+                    <th>Total invested amount</th>
+                    <th>Total Time Period</th>
+                    <th>Return Rate</th>
+                    <th>Total Return Rate Amount</th>
+                    <th>Total Return on Investment</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ totalinvest }}</td>
+                    <td>{{ period }}</td>
+                    <td>{{ ir }}</td>
+                    <td>{{ totalinterest }}</td>
+                    <td>{{ totalROIA }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <canvas id="myChart" height="100"></canvas>
+            <script>
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Investment Amount","Return Amount"],
+            datasets: [{
+                label: 'ROI',
+                data: [{{ amount }},{{ totalinterest }}],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+  </script>
+            <div class="container-login100-form-btn" style="background-color:white;">
+                <button class="login100-form-btn">
+                        <a href="{% url 'index' %}">
+                            Back to services
+                </button></a>
+            </div>
+            <span class="login100-form-title p-b-37"></span>
+            <div class="container-login100-form-btn" style="background-color:white;">
+                <button class="login100-form-btn">
+                     <a href="{% url 'home' %}">
+                        Back to home
+                </button></a>
+            </div>
+        </form>
+   </div>
+</div>
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
